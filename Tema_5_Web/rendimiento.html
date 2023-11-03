@@ -1,0 +1,617 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="es" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>6.5. Rendimiento y optimización &#8212; ASIR - Servicios de Red e Internet</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/my_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/translations.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Tema_5_Web/rendimiento';</script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="6.6. Alta disponibilidad" href="disponibilidad.html" />
+    <link rel="prev" title="6.4. Seguridad. HTTPS" href="https.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ASIR - Servicios de Red e Internet</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contenidos</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PRESENTACION/Index.html">1. Presentación Módulo</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PRESENTACION/presentacion.html">1.1. Calendario del curso</a></li>
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../TEMA_1_Introduccion/Index.html">2. Introducción a los Servicios de Red</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_1_Introduccion/conceptos.html">2.1. Conceptos previos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_1_Introduccion/componentes.html">2.2. Componentes de los Srv. de Red</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_1_Introduccion/virtualizacion.html">2.3. Virtualización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_1_Introduccion/escenario.html">2.4. Entorno de trabajo</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../TEMA_2_Dhcp/Index.html">3. Protocolo de Configuración Dinámico. DHCP</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_2_Dhcp/funcionamiento.html">3.1. Funcionamiento del protocolo</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_2_Dhcp/configuracion.html">3.3. Configuración del servicio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_2_Dhcp/comprobacion.html">3.4. Comprobando el funcionamiento</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_2_Dhcp/adicionales.html">3.5. Configuraciones adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Tema_3_DNS/Index.html">4. Resolución de nombres. DNS</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_3_DNS/espacio.html">4.1. El Espacio de Nombres de Dominio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_3_DNS/tipos.html">4.2. Tipos de servidores, resoluciones y búsquedas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_3_DNS/ficherozona.html">4.3. Fichero de zona DNS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_3_DNS/configuracion.html">4.4. Configuración del servicio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_3_DNS/comprobaciones.html">4.5. Comprobando el funcionamiento</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Tema_4_Router/Index.html">5. Interconexión de Redes</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_4_Router/acceso.html">5.1. Acceso redes remotas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_4_Router/puertos.html">5.2. Apertura de puertos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_4_Router/seguridad.html">5.3. Seguridad. Proxy-Caché</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Index.html">6. Servicio WEB. HTTP(S)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="componentes.html">6.1. Componentes del protocolo HTTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clientes.html">6.2. Clientes HTTP. navegadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html">6.3. Configuración HTTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https.html">6.4. Seguridad. HTTPS</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.5. Rendimiento y optimización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disponibilidad.html">6.6. Alta disponibilidad</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Tema_6_Acceso/Index.html">7. Acceso</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_6_Acceso/Accesofichero.html">7.1. Acceso a ficheros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_6_Acceso/Accesoremoto.html">7.2. Acceso remoto</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Tema_7_Email/Index.html">8. Correo Electrónico</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tema_8_Otros/Index.html">9. Otros Servicios</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Tema_5_Web/rendimiento.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Rendimiento y optimización</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apache">6.5.1. Apache</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nginx">6.5.2. NginX</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probando-el-rendimiento">6.5.3. Probando el rendimiento</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="rendimiento-y-optimizacion">
+<h1><span class="section-number">6.5. </span>Rendimiento y optimización<a class="headerlink" href="#rendimiento-y-optimizacion" title="Permalink to this heading">#</a></h1>
+<p>El rendimiento de un servidor web, el más utilizado, y a través del cual se prestan muchos otros servicios(por ejemplo el WedDAV), es un aspecto crítico.
+Para mejorar su rendimiento existen multitud de parámetros y módulos que pueden configurarse en función de nuestras necesidades.
+Cada servidor suele tener en su documentación oficial, una guía de como <strong>ajustar (tuning en inglés) el rendimiento (performance en inglés)</strong>.</p>
+<a class="reference internal image-reference" href="../_images/rendimientoapachenginx.png"><img alt="Rendimiento Apache vs NGINX" class="align-center" src="../_images/rendimientoapachenginx.png" style="width: 400px;" /></a>
+<section id="apache">
+<h2><span class="section-number">6.5.1. </span>Apache<a class="headerlink" href="#apache" title="Permalink to this heading">#</a></h2>
+<p>Tal y como indica la documentación oficial… <em>«Apache es un servidor web de uso general, diseñado para proporcionar flexibilidad, portabilidad y
+rendimiento. Aunque no ha sido diseñado específicamente para establecer récords de referencia, es capaz de ofrecer un alto rendimiento en muchas
+situaciones. La versión 2.x contiene muchas optimizaciones adicionales para aumentar el rendimiento y la escalabilidad»</em>.
+La mayoria de estas opciones de optimización y mejora del rendimiento de nuestro servidor Apache tienen que ver con tres conceptos:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Opciones generales de optimización.</p></li>
+<li><p>Configuración Caché</p></li>
+<li><p>Módulos Apache.</p></li>
+<li><p>Controladores(<strong>Handlers</strong>)</p></li>
+</ol>
+</div></blockquote>
+<p><strong>OPCIONES GENERALES</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Cuestiones relacionadas con configuraciones de Hardware, del sistema operativo sobre el que se ejecuta Apache o de la red. Puedes encontrar un manual bastante útil en la <a class="reference external" href="http://httpd.apache.org/docs/current/misc/perf-tuning.html">doc. oficial</a>.</p></li>
+</ul>
+</div></blockquote>
+<p><strong>CONFIGURACIÓN CACHÉ</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Podemos configurar nuestro Apache para que guarde en memoria algunos elementos de los que ofrece el servicio (<a class="reference external" href="https://httpd.apache.org/docs/2.4/caching.html">manual en la doc. oficial</a>).</p></li>
+<li><p>También existe la opción de ayudarnos con otros programas que actuen como intermediarios entre las peticiones de los clientes y el propio servidor web (ejemplos de esto pueden ser <a class="reference external" href="https://memcached.org/">Memcached</a> o <a class="reference external" href="https://varnish-cache.org/">Varnish</a>).</p></li>
+</ul>
+</div></blockquote>
+<p><strong>MÓDULOS DE APACHE</strong></p>
+<blockquote>
+<div><ul>
+<li><p>La mayoría de opciones de optimización se configuran en <a class="reference external" href="http://httpd.apache.org/docs/2.4/mod/">módulos</a> independientes de Apache, los cuales deben activarse y configurarse adecuadamente (<strong>mods_available/mods_enable</strong>)</p>
+<blockquote>
+<div><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apachectl<span class="w"> </span>-V
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/mpmApache.png"><img alt="MPM Apache" class="align-center" src="../_images/mpmApache.png" style="width: 300px;" /></a>
+</div></blockquote>
+</li>
+<li><p>En concreto, los <strong>MPM-Módulos de multiprocesamiento</strong> (<a class="reference external" href="http://httpd.apache.org/docs/current/mpm.html">documentación oficial</a>) nos permiten configurar el modo en que apache gestiona las peticiones de cada cliente(navegador) conectado, desde el punto de vista en que son creados y manejados los procesos y subprocesos(hilos o threads en inglés) necesarios.</p>
+<blockquote>
+<div><div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>
+Existen <b>3 modos de multiprocesamiento</b> en Apache <sup id="fnref:note1"><a class="footnote-ref" href="#fn:note1" role="doc-noteref">1</a></sup>. La elección de uno u otro nos va a condicionar por ejemplo el manejador (Handler) que atenderá las peticiones PHP.
+<ul>
+  <li>Prefork</li>
+  <li>Worker</li>
+  <li>Event</li>
+</ul>
+</p></div>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<p><strong>HANDLERS</strong></p>
+<blockquote>
+<div><p>Los Handlers o Controladores son los programas encargados de ejecutar determinados ficheros del servicio web. La elección de unos u otros puede mejorar el rendimiento del servidor.
+El ejemplo más habitual en los actualmente es el del handler configurado en nuestro servidor para procesar las peticiones de paginas <strong>.php</strong>.
+Las alternativas existentes, tal y como puedes <a class="reference external" href="https://blog.ahierro.es/php-mod_php-vs-cgi-vs-fastcgi-vs-fpm/#modphp,_CGI,_FastCGI_o_FPM,_cual_es_mejor">consultar en la web</a>, son:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><strong>*mod_php</strong></p></li>
+<li><p>CGI/_FastCGI</p></li>
+<li><p><strong>FPM</strong></p></li>
+</ol>
+</div></blockquote>
+</div></blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>¿Sabrías decir que tipo de configuración de MPM y handler de PHP necesitarías si fueras a alojar una web en tu servidor con una carga de actividad y número de peticiones elevadas y concurrentes?</p>
+</div>
+</section>
+<section id="nginx">
+<h2><span class="section-number">6.5.2. </span>NginX<a class="headerlink" href="#nginx" title="Permalink to this heading">#</a></h2>
+<p>
+Inicialmente desarrollado para superar el rendimiento de Apache sirviendo contenidos estáticos (imágenes, css..), Nginx usa menos memoria que
+Apache, y puede manejar aproximadamente cuatro veces más solicitudes. Por el contrario es menos flexible que Apache (no es tan módular como este).
+La realidad es que la mayoría de las webs con mayor actividad suelen estar alojadas en servidores NginX. De hecho, tal y como indica
+su web oficial <i>”NGINX es bien conocido como un balanceador de carga de alto rendimiento, caché y servidor web, que alimenta más del 40% de los
+sitios web más activos del mundo”</i>.
+Existen muchas opciones que podemos modificar para ajustar el rendimiento de nuestro servidor y que podemos encontrar en la web <sup id="fnref:note2"><a class="footnote-ref" href="#fn:note2" role="doc-noteref">2</a></sup>. Algunos
+de los concetpos y parámetros más importantes que podemos modificar son:
+<ul>
+    <li>
+        worker_processes
+    </li>
+    <li>
+        worker_connections
+    </li>
+    <li>
+        E / S de disco
+    </li>
+    <li>
+        Compresión
+    </li>
+    <li>
+        .............
+    </li>
+</ul>
+</p></section>
+<section id="probando-el-rendimiento">
+<h2><span class="section-number">6.5.3. </span>Probando el rendimiento<a class="headerlink" href="#probando-el-rendimiento" title="Permalink to this heading">#</a></h2>
+<p>Existen multitud de herramientas para hacer test de referencia (<strong>benchmarking</strong> en inglés) sobre servidores web, simulando multitud de conexiones y devolviendo los datos de tiempo y carga registrados en el servidor (Apache, NginX..)
+Algunos ejemplos este tipo de SW que podemos usar para obtener cálculos del rendimiento de nuestros servidrores web son:</p>
+<blockquote>
+<div><blockquote>
+<div><ul>
+<li><dl>
+<dt><a class="reference external" href="https://httpd.apache.org/docs/2.4/programs/ab.html">AB (Apache Benchmarking)</a>, incluido en la instalación de Apache.</dt><dd><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ab<span class="w"> </span>-n<span class="w"> </span><span class="m">1000</span><span class="w"> </span>-c<span class="w"> </span><span class="m">5</span><span class="w"> </span>-k<span class="w"> </span>http://example.com
+</pre></div>
+</div>
+</dd>
+</dl>
+<a class="reference internal image-reference" href="../_images/resultadoComandoAB.png"><img alt="Resultado comando AB" class="align-center" src="../_images/resultadoComandoAB.png" style="width: 300px;" /></a>
+</li>
+<li><p><a class="reference external" href="https://github.com/wg/wrk">WRK</a>, para realizar la instalación puedes seguir lo que indica el <a class="reference external" href="https://www.poppastring.com/blog/wrk-for-benchmarking-and-testing">siguiente manual</a>.</p></li>
+<li><p><a class="reference external" href="https://jmeter.apache.org/">Apache JMeter</a> : Una de las opciones más populares en el mundo Open Source basado en Java.</p></li>
+<li><p><a class="reference external" href="https://gatling.io/">Gatling</a></p></li>
+</ul>
+</div></blockquote>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Puede ser bastante útil utilizar algún código de ejemplo que podamos utilizar para realizar nuestras pruebas de rendimiento. Un ejemplo para probar PHP y MySql puedes encontrarlo
+en el enlace <a class="github reference external" href="https://github.com/vanilla-php/benchmark-php">vanilla-php/benchmark-php</a></p>
+<a class="reference internal image-reference" href="../_images/ejemploBenchmarkPHPMysql.png"><img alt="Resultado comando AB" class="align-center" src="../_images/ejemploBenchmarkPHPMysql.png" style="width: 300px;" /></a>
+</div>
+</div></blockquote>
+<div style="text-align: justify; color: BLUE; background-color: #e0e0e0; border-radius: 25px; padding-top: 20px;padding-right: 30px;padding-bottom: 20px; padding-left: 30px;">
+<u>¿Sabrías?</u></br>
+Usando el código enlazado anteriormente prueba a realizar con AB algún análisis del rendimiento de ambos servidores. Puedes utilizar cualquier Instalación
+previa de un servidor web que hayas hecho en este tema, capaz de ejecutar código PHP.
+</div></br></br>
+<div style="text-align: justify; color: orange; background-color: #e0e0e0; border-radius: 25px; padding-top: 20px;padding-right: 30px;padding-bottom: 20px; padding-left: 30px;">
+<u><b>EJERCICIO 2</b></u></br>
+Realiza el ejercicio 2 del Tema 5 del aula virtual. Realiza comprobaciones del rendimiento de tu servidor web y configúralo para mejorar los resultados.
+</div>
+</br></br>
+<div class="footnotes">
+    <hr />
+    <ol>
+        <li class="footnote" id="fn:note1">
+            <p>
+                <b>Digitalocean:</b> <a href="https://www.digitalocean.com/community/tutorials/how-to-configure-apache-http-with-mpm-event-and-php-fpm-on-ubuntu-18-04-es" target="_blank">Cómo configurar el servidor HTTP Apache con MPM </a>
+                <a class="footnote-backref" rev="footnote" href="#fnref:note1">&#8617;</a>
+            </p>
+        </li>
+        <li class="footnote" id="fn:note2">
+            <p>
+                <b> Geekflare:</b> <a href="https://geekflare.com/es/nginx-production-configuration/" target="_blank">Configuración de Nginx para rendimiento y seguridad</a>
+               <a class="footnote-backref" rev="footnote" href="#fnref:note2">&#8617;</a>
+            </p>
+        </li>
+    </ol>
+</div></section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="https.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title"><span class="section-number">6.4. </span>Seguridad. HTTPS</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="disponibilidad.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title"><span class="section-number">6.6. </span>Alta disponibilidad</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apache">6.5.1. Apache</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nginx">6.5.2. NginX</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probando-el-rendimiento">6.5.3. Probando el rendimiento</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por M. Tomás Giménez Albert
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, M. Tomás Giménez Albert.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

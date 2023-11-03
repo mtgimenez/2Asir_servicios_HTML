@@ -1,0 +1,603 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="es" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>6.3. Configuración HTTP &#8212; ASIR - Servicios de Red e Internet</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/my_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/translations.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Tema_5_Web/http';</script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="6.4. Seguridad. HTTPS" href="https.html" />
+    <link rel="prev" title="6.2. Clientes HTTP. navegadores" href="clientes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ASIR - Servicios de Red e Internet</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contenidos</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PRESENTACION/Index.html">1. Presentación Módulo</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PRESENTACION/presentacion.html">1.1. Calendario del curso</a></li>
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../TEMA_1_Introduccion/Index.html">2. Introducción a los Servicios de Red</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_1_Introduccion/conceptos.html">2.1. Conceptos previos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_1_Introduccion/componentes.html">2.2. Componentes de los Srv. de Red</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_1_Introduccion/virtualizacion.html">2.3. Virtualización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_1_Introduccion/escenario.html">2.4. Entorno de trabajo</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../TEMA_2_Dhcp/Index.html">3. Protocolo de Configuración Dinámico. DHCP</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_2_Dhcp/funcionamiento.html">3.1. Funcionamiento del protocolo</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_2_Dhcp/configuracion.html">3.3. Configuración del servicio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_2_Dhcp/comprobacion.html">3.4. Comprobando el funcionamiento</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_2_Dhcp/adicionales.html">3.5. Configuraciones adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Tema_3_DNS/Index.html">4. Resolución de nombres. DNS</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_3_DNS/espacio.html">4.1. El Espacio de Nombres de Dominio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_3_DNS/tipos.html">4.2. Tipos de servidores, resoluciones y búsquedas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_3_DNS/ficherozona.html">4.3. Fichero de zona DNS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_3_DNS/configuracion.html">4.4. Configuración del servicio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_3_DNS/comprobaciones.html">4.5. Comprobando el funcionamiento</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Tema_4_Router/Index.html">5. Interconexión de Redes</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_4_Router/acceso.html">5.1. Acceso redes remotas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_4_Router/puertos.html">5.2. Apertura de puertos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_4_Router/seguridad.html">5.3. Seguridad. Proxy-Caché</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Index.html">6. Servicio WEB. HTTP(S)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="componentes.html">6.1. Componentes del protocolo HTTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clientes.html">6.2. Clientes HTTP. navegadores</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.3. Configuración HTTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https.html">6.4. Seguridad. HTTPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rendimiento.html">6.5. Rendimiento y optimización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disponibilidad.html">6.6. Alta disponibilidad</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Tema_6_Acceso/Index.html">7. Acceso</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_6_Acceso/Accesofichero.html">7.1. Acceso a ficheros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_6_Acceso/Accesoremoto.html">7.2. Acceso remoto</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Tema_7_Email/Index.html">8. Correo Electrónico</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tema_8_Otros/Index.html">9. Otros Servicios</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Tema_5_Web/http.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Configuración HTTP</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apache">6.3.1. Apache</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nginx">6.3.2. NginX</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="configuracion-http">
+<h1><span class="section-number">6.3. </span>Configuración HTTP<a class="headerlink" href="#configuracion-http" title="Permalink to this heading">#</a></h1>
+<p><strong>Los servidores web</strong> son los encargados de servir a los navegadores los contenidos solicitados. Actualmente 3 son los principales servidores web que tienen un uso más extendido:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><strong>Apache</strong>: Servidor Open Source disponible en sistemas Unix, Microsoft y Apple</p></li>
+<li><p><strong>NGINX</strong>: Software libre y de código abierto, para Linux, FreeBSD y Windows, pensado para mejorar el rendimiento de apache.</p></li>
+<li><p><strong>Internet Information Services(IIS)</strong>: Propiedad de Microsoft, únicamente para sistemas Windows.</p></li>
+</ol>
+</div></blockquote>
+<p>Puedes encontrar una comparativa muy interesante entre la utilización de los distintos servidores
+y otras tecnologías relacionadas en la <a class="reference external" href="https://w3techs.com/technologies/comparison/ws-apache,ws-microsoftiis,ws-nginx">web de W3Techs</a>.</p>
+<a class="reference internal image-reference" href="../_images/comparativaServers.png"><img alt="Utilización servidores web dic. 2020" class="align-center" src="../_images/comparativaServers.png" style="width: 300px;" /></a>
+<p>En cualquiera de los servidores que utilicemos debemos prestar especial atención a los siguientes elementos o propiedades:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Instalación y configuración del servicio sobre el <strong>SO</strong> e Infraestructura(<strong>MV, contenedor</strong>, cloud…) correspondiente.</p></li>
+<li><dl class="simple">
+<dt>Directorio/s donde se ubicarán el/los sitio/s web que administremos.</dt><dd><ul>
+<li><p>Permisos adecuados (chown/chmod) → <em>$¡¡¡¡¡¡¡¡sudo chmod -R 777!!!!</em>)</p></li>
+<li><p>Espacio disponible</p></li>
+<li><p>Seguridad (Backups, redundancia, …)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Instalación módulos necesarios:</dt><dd><ul>
+<li><p>Lenguajes del lado servidor( PHP, ASP..)</p></li>
+<li><p>Conectores con SGBD(Oracle,Dbase,MySql..)</p></li>
+<li><p>Autenticación</p></li>
+<li><p>Control de acceso</p></li>
+<li><p>etc…</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Configuración para conexiones seguras(encriptadas) mediante HTTPS.</p></li>
+<li><dl class="simple">
+<dt>Varios sitios en un mismo servidor (<strong>VIRTUAL HOST</strong>).</dt><dd><ul>
+<li><p>IP</p></li>
+<li><p><strong>Nombre</strong> → <em>Configuración DNS</em></p></li>
+<li><p>Puerto</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Acceso remoto a la gestión de los archivos en el servidor</dt><dd><ul>
+<li><p>FTP</p></li>
+<li><p>WebDAV.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Registro de sucesos en el servidor (LOG)</p></li>
+</ul>
+</div></blockquote>
+<p style="text-align: justify;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Pdf-2127829.png/480px-Pdf-2127829.png" alt="Perfil" width="50" style="vertical-align: middle; float:left;"/>  <b>En el siguiente documento puedes encontrar un manual completo de como realizar la configuración básica de algunos servidores web.</b></br><a class="reference internal image-reference" href="../_images/ConfiguracionservidoresHTTP.pdf"><img alt="Tutorial configuración servidores Web" class="align-center" src="../_images/ConfiguracionservidoresHTTP.pdf" style="width: 400px;" /></a>
+<section id="apache">
+<h2><span class="section-number">6.3.1. </span>Apache<a class="headerlink" href="#apache" title="Permalink to this heading">#</a></h2>
+<p>Seguramente se trata del servidor web más conocido. Una de sus ventajas es la calidad de su <a class="reference external" href="https://httpd.apache.org/docs/2.4/">documentación oficial</a>,
+en la cual podemos encontrar información muy completa y tutoriales de creación de determinados escenarios.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Disponible para Linux, Windows, MAC.</p></li>
+<li><p>¿Instalación de un panel de administración para facilitar administración? → <a class="reference external" href="https://doxfer.webmin.com/Webmin/Apache_Webserver">p.e Webmin</a></p></li>
+<li><p>Comprobamos los módulos instalados/activos.</p></li>
+<li><dl class="simple">
+<dt>Configurar opciones de Apache</dt><dd><ul>
+<li><p>Opciones por directorio.</p></li>
+<li><p>Directivas</p></li>
+<li><p>.htaccess</p></li>
+<li><p>Permisos de acceso.</p></li>
+<li><p>Espacios de usuario</p></li>
+<li><p>Indizado de directorios para ver su contenido como una carpeta.</p></li>
+<li><p>Hosting virtuales.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>¿Sabrías realizar la configuración básica de un servidor Apache?</p>
+<ol class="arabic simple">
+<li><p>Instala el servicio en una MV Ubuntu Server. Comprueba su acceso con los distintos modos de funcionamiento de la red en VirtualBox.</p></li>
+<li><p>Lista los módulos instalados en apache. Instala alguno más.</p></li>
+<li><p>Configura tu servidor para que, por ejemplo, sirva los sitios prueba1.com y prueba2.com.</p></li>
+<li><p>Permite el indizado de directorio en algún caso concreto.</p></li>
+<li><p>Activa el acceso con identificación.</p></li>
+</ol>
+</div>
+</br>
+<div style="text-align: justify; color: orange; background-color: #e0e0e0; border-radius: 25px; padding-top: 20px;padding-right: 30px;padding-bottom: 20px; padding-left: 30px;">
+<u><b>PRÁCTICA 1</b></u></br>
+Realiza la actividad indicada en el aula virtual y entrega el diploma obtenido a la finalización de la misma.
+</div>
+</br></br>
+<div style="text-align: justify; color: orange; background-color: #e0e0e0; border-radius: 25px; padding-top: 20px;padding-right: 30px;padding-bottom: 20px; padding-left: 30px;">
+<u><b>PRÁCTICA 2</b></u></br>
+Realiza la actividad indicada en el aula virtual.
+</div>
+</br></section>
+<section id="nginx">
+<h2><span class="section-number">6.3.2. </span>NginX<a class="headerlink" href="#nginx" title="Permalink to this heading">#</a></h2>
+<p>
+<b>NGINX, pronunciado en inglés como «engine-ex»</b>, es un famoso software de servidor web de código abierto <sup id="fnref:note1"><a class="footnote-ref" href="#fn:note1" role="doc-noteref">1</a></sup>.
+En su versión inicial, funcionaba en servidores web HTTP.
+Sin embargo, hoy en día también sirve como proxy inverso, balanceador de carga HTTP y proxy de correo electrónico para IMAP, POP3 y SMTP.
+</p><p>La aparición de este servidor fue provocada por la búsqueda de un servicio web que
+mejorara las prestaciones de Apache en páginas con una alta tasa de accesibilidad (en el orden de miles de conexiones simultáneas).
+En realidad la configuración de un servidor y otro guardan ciertas semejanzas.</p>
+<p style="text-align: justify;"><img src="https://upload.wikimedia.org/wikipedia/commons/6/68/Document_%2889367%29_-_The_Noun_Project.svg" alt="Perfil" width="50" style="vertical-align: middle; float:left;"/>
+Un ejemplo de fichero de configuración lo puedes ver en el siguiente enlace.
+</p><a class="reference internal image-reference" href="Tema_5_Web/img/nginxEjemplo.txt"><img alt="Ejemplo fichero configuración NGINX" class="align-center" src="Tema_5_Web/img/nginxEjemplo.txt" style="width: 400px;" /></a>
+<p>
+Al igual que en el caso de Apache, puedes encontrar muchísima ayuda en la web<sup id="fnref:note2"><a class="footnote-ref" href="#fn:note2" role="doc-noteref">2</a></sup>. Puedes encontrar, por ejemplo:
+<ul  style="padding-left: 5em;">
+  <li>Listado de tutoriales en <b><a href="https://techexpert.tips/es/category/nginx-es/" target="_blank">https://techexpert.tips/es/category/nginx-es/</a></b>.</li>
+  <li>acceder a este conjunto de videotutoriales en el que explican paso a paso como configurar un servidor NGINX.</li>
+</ul>
+</p><iframe width="300" style="display:block; margin-left:auto; margin-right:auto;" src="https://www.youtube.com/embed/eyxpLa9hUS8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></br>
+<div style="text-align: justify; color: orange; background-color: #e0e0e0; border-radius: 25px; padding-top: 20px;padding-right: 30px;padding-bottom: 20px; padding-left: 30px;">
+<u><b>PRÁCTICA 3</b></u></br>
+Accede a la práctica 3 del Tema 5 del aula virtual. Realiza la configuración de un servidor NGINX.
+</div>
+</br>
+</br>
+</br>
+<div class="footnotes">
+    <hr />
+    <ol>
+        <li class="footnote" id="fn:note1">
+            <p>
+                <b>Fuente:</b> <a href="https://www.hostinger.es/tutoriales/que-es-nginx/" target="_blank">¿Qué es NGINX y cómo funciona?</a>
+                <a class="footnote-backref" rev="footnote" href="#fnref:note1">&#8617;</a>
+            </p>
+        </li>
+        <li class="footnote" id="fn:note2">
+            <p>
+                <b> Documentación oficial:</b> <a href="https://nginx.org/en/docs/" target="_blank">https://nginx.org/en/docs/</a>
+               <a class="footnote-backref" rev="footnote" href="#fnref:note2">&#8617;</a>
+            </p>
+        </li>
+    </ol>
+</div></section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="clientes.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title"><span class="section-number">6.2. </span>Clientes HTTP. navegadores</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="https.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title"><span class="section-number">6.4. </span>Seguridad. HTTPS</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apache">6.3.1. Apache</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nginx">6.3.2. NginX</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por M. Tomás Giménez Albert
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, M. Tomás Giménez Albert.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

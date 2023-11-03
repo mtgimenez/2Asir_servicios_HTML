@@ -1,0 +1,665 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="es" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>4.4. Configuración del servicio &#8212; ASIR - Servicios de Red e Internet</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/my_theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/translations.js"></script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Tema_3_DNS/configuracion';</script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="4.5. Comprobando el funcionamiento" href="comprobaciones.html" />
+    <link rel="prev" title="4.3. Fichero de zona DNS" href="ficherozona.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ASIR - Servicios de Red e Internet</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contenidos</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PRESENTACION/Index.html">1. Presentación Módulo</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PRESENTACION/presentacion.html">1.1. Calendario del curso</a></li>
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../TEMA_1_Introduccion/Index.html">2. Introducción a los Servicios de Red</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_1_Introduccion/conceptos.html">2.1. Conceptos previos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_1_Introduccion/componentes.html">2.2. Componentes de los Srv. de Red</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_1_Introduccion/virtualizacion.html">2.3. Virtualización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_1_Introduccion/escenario.html">2.4. Entorno de trabajo</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../TEMA_2_Dhcp/Index.html">3. Protocolo de Configuración Dinámico. DHCP</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_2_Dhcp/funcionamiento.html">3.1. Funcionamiento del protocolo</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_2_Dhcp/configuracion.html">3.3. Configuración del servicio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_2_Dhcp/comprobacion.html">3.4. Comprobando el funcionamiento</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../TEMA_2_Dhcp/adicionales.html">3.5. Configuraciones adicionales</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Index.html">4. Resolución de nombres. DNS</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="espacio.html">4.1. El Espacio de Nombres de Dominio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipos.html">4.2. Tipos de servidores, resoluciones y búsquedas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ficherozona.html">4.3. Fichero de zona DNS</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.4. Configuración del servicio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comprobaciones.html">4.5. Comprobando el funcionamiento</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Tema_4_Router/Index.html">5. Interconexión de Redes</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_4_Router/acceso.html">5.1. Acceso redes remotas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_4_Router/puertos.html">5.2. Apertura de puertos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_4_Router/seguridad.html">5.3. Seguridad. Proxy-Caché</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Tema_5_Web/Index.html">6. Servicio WEB. HTTP(S)</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_5_Web/componentes.html">6.1. Componentes del protocolo HTTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_5_Web/clientes.html">6.2. Clientes HTTP. navegadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_5_Web/http.html">6.3. Configuración HTTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_5_Web/https.html">6.4. Seguridad. HTTPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_5_Web/rendimiento.html">6.5. Rendimiento y optimización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_5_Web/disponibilidad.html">6.6. Alta disponibilidad</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Tema_6_Acceso/Index.html">7. Acceso</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_6_Acceso/Accesofichero.html">7.1. Acceso a ficheros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tema_6_Acceso/Accesoremoto.html">7.2. Acceso remoto</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Tema_7_Email/Index.html">8. Correo Electrónico</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tema_8_Otros/Index.html">9. Otros Servicios</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Tema_3_DNS/configuracion.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Configuración del servicio</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuracion-clientes">4.4.1. Configuración clientes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">4.4.1.1. Windows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">4.4.1.2. Linux</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuracion-basica-servidor">4.4.2. Configuración básica servidor</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.4.2.1. Windows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.4.2.2. Linux</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mejorando-nuestro-servicio">4.4.3. Mejorando nuestro servicio</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="configuracion-del-servicio">
+<h1><span class="section-number">4.4. </span>Configuración del servicio<a class="headerlink" href="#configuracion-del-servicio" title="Permalink to this heading">#</a></h1>
+<section id="configuracion-clientes">
+<h2><span class="section-number">4.4.1. </span>Configuración clientes<a class="headerlink" href="#configuracion-clientes" title="Permalink to this heading">#</a></h2>
+<section id="windows">
+<h3><span class="section-number">4.4.1.1. </span>Windows<a class="headerlink" href="#windows" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p><strong>GUI</strong></p>
+<p>El servicio cliente DNS debe estar en funcionamiento en el sistema(por defecto lo está). <em>Programas -&gt; Herramientas Administrativas -&gt; Servicios</em></p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/srvWinGui.png"><img alt="NAS Diagram" class="align-center" src="../_images/srvWinGui.png" style="width: 400px;" /></a>
+</div></blockquote>
+<p>Las propiedades se realizan desde la configuración de las tarjetas de red, junto con el resto de parámetros de red.</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/propdnstarjeta.png"><img alt="Conf. DNS windows GUI" class="align-center" src="../_images/propdnstarjeta.png" style="width: 300px;" /></a>
+</div></blockquote>
+<p><strong>Línea de comandos</strong></p>
+<p>En PowerShell, a través de los siguientes comandos:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">PS C:\&gt; Set-DnsClientServerAddress -InterfaceIndex 12 -ServerAddresses (&quot;10.0.0.1&quot;,&quot;10.0.0.2&quot;)</span>
+<span class="go">PS C:\&gt; Get-DnsClientServerAddress</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="linux">
+<h3><span class="section-number">4.4.1.2. </span>Linux<a class="headerlink" href="#linux" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p><strong>GUI</strong></p>
+<p>Los entornos gráficos (Gnome ,KDE….) proporcionan utilidades para la configuración de los clientes DNS en la configuración de las interfaces de red(muy parecido a Windows).</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/confdnsguilinux.png"><img alt="conf. DNS Linux GUI" class="align-center" src="../_images/confdnsguilinux.png" style="width: 300px;" /></a>
+</div></blockquote>
+<p><strong>Línea de comandos</strong></p>
+<p>Si nuestra configuracion la realizamos sin GUI, debemos ubicar el fichero correspondiente, teniendo en cuenta que éste puede variar de una distro o version a otra.</p>
+<p>El fichero sobre el que trabajan la mayoria de las distribuciones es <strong>/etc/resolv.conf(actualmente en muchos sistemas esto no es tan simple, y lo gestiona el demonio systemd)</strong> que guarda las direcciones IP de los servidores DNS. En nuestras distros ya sabemos que esta configuración se realiza en el <strong>fichero .yaml de netplan</strong>.</p>
+<blockquote>
+<div><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">nameservers:</span>
+<span class="go">    addresses: [10.10.10.1, 1.1.1.1]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+</section>
+<section id="configuracion-basica-servidor">
+<h2><span class="section-number">4.4.2. </span>Configuración básica servidor<a class="headerlink" href="#configuracion-basica-servidor" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h3><span class="section-number">4.4.2.1. </span>Windows<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>En este módulo no trataremos la instalación y configuración de controladores de dominio(AD), aunque <strong>Active Directory necesita de DNS</strong> para poder trabajar correctamente.</p>
+<p><strong>GUI</strong></p>
+<p>De manera visual a traves de la interfaz gráfica que ofrece Windows 20XX Server y la instalación de roles y características.</p>
+<p>Puedes encontrar un ejemplo de configuración paso a paso en el siguiente video:</p>
+<iframe width="250" style="display:block; margin-left:auto; margin-right:auto;"src="https://www.youtube.com/embed/B7I0dcHoxpg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></br><p>
+  <b>Línea de comandos </b><sup id="fnref:note1"><a class="footnote-ref" href="#fn:note1" role="doc-noteref">1</a></sup>
+</p><ul>
+<li><dl>
+<dt>Instalación. Podemos ejecutar el siguiente comando para buscar el nombre del rol que debemos instalar</dt><dd><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">Get-WindowsFeature | where {($_.name -like “DNS”)}</span>
+<span class="gp">#</span>con<span class="w"> </span>el<span class="w"> </span>comando<span class="w"> </span>anterior<span class="w"> </span>averiguamos<span class="w"> </span>y<span class="w"> </span>ahora<span class="w"> </span>lo<span class="w"> </span>instalamos
+<span class="go">Install-WindowsFeature DNS -IncludeManagementTools</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Ponemos a escuchar al servidor únicamente por las interfaces que queramos(en nuestros escenarios en la tarjeta local):</dt><dd><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">dnscmd /resetlistenaddresses 192.168.200.254</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Configuramos los reenviadores(forwarders). Serán las direcciones IP a las que el servidor DNS reenvía las consultas DNS cuando no puede resolverlas de forma local.</dt><dd><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">dnscmd /resetforwarders 8.8.8.8</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Creación de una zona de búsqueda PRIMARIA y su correspondiente zona INVERSA</dt><dd><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">PS C:\&gt; Add-DnsServerPrimaryZone -ZoneName &quot;asir.com&quot; -ZoneFile &quot;asir.com.dns&quot; -verbose -passthru</span>
+<span class="go">PS C:\&gt; Add-DnsServerPrimaryZone -NetworkId &quot;192.168.200.0/24&quot; -ZoneFile &quot;200.168.192.in-addr.arpa.dns&quot; -verbose -passthru</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>Creación de los <strong>registros(RR)</strong> que deseemos</p>
+<dl>
+<dt>Podemos hacer uso de la instrucción <a class="reference external" href="https://docs.microsoft.com/en-us/powershell/module/dnsserver/add-dnsserverresourcerecord?view=win10-ps#examples">Add-DnsServerResourceRecord</a>  o del comando <a class="reference external" href="https://docs.microsoft.com/es-es/windows-server/administration/windows-commands/dnscmd#dnscmd-recordadd-command">DNSCmd/recordadd</a></dt><dd><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span>añadir<span class="w"> </span>un<span class="w"> </span>NS<span class="w"> </span><span class="o">(</span>Servidor<span class="w"> </span>de<span class="w"> </span>nombres<span class="w"> </span>para<span class="w"> </span>zonas<span class="w"> </span>secundarias...<span class="o">)</span>
+<span class="go">Add-DnsServerResourceRecord -Name &quot;asir.com&quot; -NameServer &quot;ns2.asir.com&quot; -NS -ZoneName &quot;asir.com&quot;</span>
+<span class="gp">#</span>añadir<span class="w"> </span>un<span class="w"> </span>host<span class="o">(</span>A<span class="o">)</span><span class="w"> </span>con<span class="w"> </span>su<span class="w"> </span>PTR<span class="w"> </span>para<span class="w"> </span>lo<span class="w"> </span>zona<span class="w"> </span>inversa<span class="w"> </span>correspondiente
+<span class="go">Add-DnsServerResourceRecord -ZoneName &quot;asir.com&quot; -A -Name &quot;www&quot; -IPv4Address &quot;192.168.200.5&quot;</span>
+<span class="go">Add-DnsServerResourceRecordPtr -Name &quot;5&quot; -ZoneName &quot;200.168.192.in-addr.arpa&quot; -PtrDomainName &quot;www.asir.com&quot;</span>
+<span class="gp">#</span>añadir<span class="w"> </span>un<span class="w"> </span>alias<span class="o">(</span>CNAME<span class="o">)</span>
+<span class="go">Add-DnsServerResourceRecord -CName -Name &quot;www2&quot; -HostNameAlias &quot;www.asir.com&quot; -ZoneName &quot;asir.com&quot; -AllowUpdateAny</span>
+<span class="gp">#</span>añadir<span class="w"> </span>un<span class="w"> </span>servidor<span class="w"> </span>de<span class="w"> </span>correo<span class="o">(</span>MX<span class="o">)</span><span class="w"> </span>para<span class="w"> </span>mi<span class="w"> </span>dominio<span class="w"> </span>con<span class="w"> </span>una<span class="w"> </span>preferencia<span class="w"> </span>de<span class="w"> </span><span class="m">10</span>.<span class="w"> </span>Debo<span class="w"> </span>añadir<span class="w"> </span>un<span class="w"> </span>registro<span class="w"> </span>tipo<span class="w"> </span>A<span class="w"> </span>para<span class="w"> </span>que<span class="w"> </span>me<span class="w"> </span>traduzca<span class="w"> </span>nombre<span class="w"> </span>por<span class="w"> </span>IP.
+<span class="go">Add-DnsServerResourceRecord -ZoneName &quot;asir.com&quot; -A -Name &quot;mail&quot; -IPv4Address &quot;192.168.200.6&quot;</span>
+<span class="go">Add-DnsServerResourceRecord -Name &quot;.&quot; -MX -ZoneName &quot;asir.com&quot; -MailExchange &quot;mail.asir.com&quot; -Preference 10</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Exportar/Importar configuración de zona/s del DNS server a fichero/s de texto.</dt><dd><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span>guarda<span class="w"> </span>los<span class="w"> </span>ficheros<span class="w"> </span>en<span class="w"> </span>C:<span class="se">\W</span>indows<span class="se">\S</span>ystem32<span class="se">\d</span>ns
+<span class="gp">#</span>también<span class="w"> </span>guardo<span class="w"> </span>la<span class="w"> </span>zona<span class="w"> </span>inversa
+<span class="go">dnscmd /zoneexport &quot;asir.com&quot; &quot;asir.com.cseg&quot; #también con Export-dnsservervzone se podría hacer</span>
+<span class="go">dnscmd /zoneexport &quot;asir.com&quot; &quot;asir.com.cseg&quot;</span>
+<span class="gp">#</span>para<span class="w"> </span>importar,<span class="w"> </span>renombro<span class="w"> </span>los<span class="w"> </span>ficheros<span class="w"> </span>anteriores<span class="w"> </span>a<span class="w"> </span>acabados<span class="w"> </span>en<span class="w"> </span>.dns<span class="w"> </span><span class="o">(</span>sustituyendo<span class="w"> </span>el<span class="w"> </span>.cseg<span class="o">)</span>
+<span class="gp">#</span>deben<span class="w"> </span>estar<span class="w"> </span>ubicados<span class="w"> </span>en<span class="w"> </span>C:<span class="se">\W</span>indows<span class="se">\S</span>ystem32<span class="se">\d</span>ns
+<span class="go">dnscmd /zoneadd &quot;asir.com&quot; /primary /file &quot;asir.com.dns&quot; /load</span>
+<span class="go">dnscmd /zoneadd &quot;200.168.192.in-addr.arpa&quot; /primary /file &quot;200.168.192.in-addr.arpa.dns&quot; /load</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id2">
+<h3><span class="section-number">4.4.2.2. </span>Linux<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>BIND o DnsMasq son los paquetes utilizados en todas las distribuciones Linux, sin interfaz gráfica añadida. Su administración configuración se realiza accediendo a varios ficheros de texto (INCLUIDO EL FICHERO DE ZONA).</p>
+<p>
+  En nuestro caso vamos a optar con configurar el servidor <b>BIND</b><sup id="fnref:note2"><a class="footnote-ref" href="#fn:note2" role="doc-noteref">2</a></sup>. Podemos encontrar alternativas gráficas para poder configurar BIND, a través de la instalación de un panel de administración, como Webmin:
+</p><a class="reference internal image-reference" href="../_images/dnswebmin.png"><img alt="Pantalla webmin administración BIND" class="align-center" src="../_images/dnswebmin.png" style="width: 400px;" /></a>
+<p>Debemos entender la estructura de ficheros que monta BIND una vez instalado, para poder realizar correctamente su configuración:</p>
+<a class="reference internal image-reference" href="../_images/ficherosbind.png"><img alt="Ficheros instalador por BIND" class="align-center" src="../_images/ficherosbind.png" style="width: 200px;" /></a>
+<dl class="simple">
+<dt>La configuración de <strong>BIND se encuentra en named.conf</strong>, la cual se distribuye con el <strong>uso de la directiva include</strong>, entre los ficheros:</dt><dd><ul class="simple">
+<li><p><strong>named.conf.options</strong>: Parámetros a nivel global del servidor DNS.</p></li>
+<li><p><strong>named.conf.local</strong>: Aquí se crean las zonas con la instrucción zone. Uno de los parámetros será la ubicación y nombre del <strong>fichero de zona</strong>.</p></li>
+<li><p>named.conf.default-zones: Algunas zonas que incluye BIND por defecto.</p></li>
+<li><p>db.*: ficheros de zona creadas en named.conf.default-zones. db.root=srv. Raiz.</p></li>
+<li><p>db.empty: plantilla de fichero de zona.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Se crea un usuario bind que pertenece al grupo principal bind que también se crea. Este usuario es el que ejecuta el demonio /usr/sbin/named, al que se le pasan los argumentos especificados en <strong>/etc/default/bind9</strong>.
+<strong>En /var/cache/bind, referencia para todas las rutas relativas (instrucción directory en el fichero de options), es donde crearemos nuestros ficheros de zona por defecto</strong>.</p>
+<p>Podemos gestiónar el servicio con los siguiente comandos (podemos elegir entre las dos opciones):</p>
+<blockquote>
+<div><div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span>sudo<span class="w"> </span>service<span class="w"> </span>bind9<span class="w"> </span><span class="o">[</span>restart<span class="p">|</span>start<span class="p">|</span>stop<span class="p">|</span>status<span class="o">]</span>
+<span class="gp">$</span>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="o">[</span>restart<span class="p">|</span>start<span class="p">|</span>stop<span class="p">|</span>status<span class="o">]</span><span class="w"> </span>bind9
+</pre></div>
+</div>
+</div></blockquote>
+<p>En el siguiente video encontrarás un ejemplo de configuración muy sencillo:</p>
+<iframe width="250" style="display:block; margin-left:auto; margin-right:auto;"src="https://www.youtube.com/embed/cNr5aLz40fI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></br></div></blockquote>
+<div style="text-align: justify; color: BLUE; background-color: #e0e0e0; border-radius: 25px; padding-top: 20px;padding-right: 30px;padding-bottom: 20px; padding-left: 30px;">
+<u>¿Sabrías?</u></br>
+Realizar la instalación de un servidor DNS MAESTRO que únicamente atienda peticiones en la tarjeta local en cada uno de los tres SSOO que has virtualizado anteriormente
+</div></br></section>
+</section>
+<section id="mejorando-nuestro-servicio">
+<h2><span class="section-number">4.4.3. </span>Mejorando nuestro servicio<a class="headerlink" href="#mejorando-nuestro-servicio" title="Permalink to this heading">#</a></h2>
+<p>A partir de aquí podemos trabajar sobre escenarios más complejos en los que podremos incluir:</p>
+<ul>
+<li><p>Servidores maestros</p></li>
+<li><p>Servidores esclavos</p></li>
+<li><p>Delegaciones de zona</p>
+<blockquote>
+<div><blockquote>
+<div><p style="text-align: justify;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Pdf-2127829.png/480px-Pdf-2127829.png" alt="Perfil" width="50" style="vertical-align: middle; float:left;"/>  En el siguiente documento puedes encontrar un manual completo de como realizar esto tanto en Windows como en Linux. </br> </br><a class="reference internal image-reference" href="../_images/Practicas_DNS.pdf"><img alt="Tutorial configuración servidores DNS" class="align-center" src="../_images/Practicas_DNS.pdf" style="width: 400px;" /></a>
+</div></blockquote>
+</br>
+<div style="text-align: justify; color: orange; background-color: #e0e0e0; border-radius: 25px; padding-top: 20px;padding-right: 30px;padding-bottom: 20px; padding-left: 30px;">
+<u><b>PRÁCTICA 1</b></u></br>
+Realiza la práctica 1 del Tema 3 del aula virtual, vas a crear tu sistema de servidores DNS.
+</div></div></blockquote>
+</li>
+</ul>
+</br>
+<div class="footnotes">
+    <hr />
+    <ol>
+        <li class="footnote" id="fn:note1">
+            <p>
+                <b>Fuente:</b> Podemos optar por utilizar el <a href="https://docs.microsoft.com/en-us/powershell/module/dnsserver/?view=win10-ps" target="_blank">Módulo DnsServer PowerShell</a> o aprovoechar la sencillez del
+                <a href="https://docs.microsoft.com/es-es/windows-server/administration/windows-commands/dnscmd" target="_blank">Comando DNSCMD</a>
+                <a class="footnote-backref" rev="footnote" href="#fnref:note1">&#8617;</a>
+            </p>
+        </li>
+        <li class="footnote" id="fn:note2">
+            <p>
+                <b>Ayuda:</b> Puedes encontrar un manual muy completo sobre DNS y BIND <a href="https://www.fpgenred.es/DNS/instalacin_de_bind_versin_9.html" target="_blank">el siguiente enlace</a><a class="footnote-backref" rev="footnote" href="#fnref:note2">&#8617;</a>
+            </p>
+        </li>
+    </ol>
+</div></section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ficherozona.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title"><span class="section-number">4.3. </span>Fichero de zona DNS</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="comprobaciones.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title"><span class="section-number">4.5. </span>Comprobando el funcionamiento</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuracion-clientes">4.4.1. Configuración clientes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">4.4.1.1. Windows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">4.4.1.2. Linux</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuracion-basica-servidor">4.4.2. Configuración básica servidor</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.4.2.1. Windows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.4.2.2. Linux</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mejorando-nuestro-servicio">4.4.3. Mejorando nuestro servicio</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por M. Tomás Giménez Albert
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, M. Tomás Giménez Albert.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
